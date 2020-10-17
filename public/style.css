@@ -1,0 +1,151 @@
+@font-face {
+  font-family: "Star Jedi";
+  src: url("asset/Starjedi.ttf") format("woff2");
+ }
+ @font-face {
+  font-family: "Star Johl";
+  src: url("asset/Starjhol.ttf") format("woff2");
+ }
+body {
+    
+
+    /* Noir */
+    background-image: url(asset/starWars_img/background.jpg);
+    
+
+  }
+
+  .topPage{
+    width: 100%;
+    height: 100%;
+  }
+
+  .titleContainer{
+    margin-top: 0;
+    display: flex; 
+    justify-content: center;
+
+  }
+  .pageTitle{
+   
+    font-family: 'Star Johl', arial;
+    font-size: 90px;
+    color: #feda4a;
+    text-shadow: 2px 2px 2px  darkgray;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .titleSubtext{
+    display: flex; 
+    justify-content: center;   font-family: Franklin Gothic;
+   color:turquoise;
+   text-shadow:4px 4px 4px black;
+   
+  }
+
+
+  #movieContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+    grid-gap: 2rem;
+    margin: 2rem;
+  }
+
+  #card {
+    height: 215px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  h3 {
+    color: white;
+    font-size: 20px;
+    font-family: Star Jedi;
+    margin: 20px 0 0 20px;
+  
+  }
+  p {
+    color: white;
+    font-weight: 400;
+    font-size: 16px;
+    align-self: end;
+    margin: 0 0 20px 20px;
+    letter-spacing: 0.5px;
+  }
+  img {
+    position: absolute;
+    top: 0;
+    height: 110%;
+    width: 100%;
+    z-index: -1;
+    transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  
+  .NeonBtn {
+    border: 2px solid #404040;
+    background-color: rgba(70, 70, 70, 0.25);
+    box-shadow: none;
+    color: #565656;
+    text-shadow: 0 0 0px transparent;
+    font-family: Star Jedi;
+    font-size: 16px;
+    transition: .2s;
+    -webkit-transition: .2s;
+    padding: 15px 30px 30px 30px;
+    line-height: 40px;
+    margin: 0;
+    border-radius: 0;
+    cursor: pointer
+}
+.NeonBtn:hover {
+   border: 2px solid #feda4a;
+   color: #feda4a;
+   text-shadow: 0 0 4px #feda4a;
+   box-shadow: inset 0 0 6px #feda4a,  0 0 6px #feda4a;
+}
+
+
+
+#crawl{
+
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+#movieTitle{
+  font-family: 'Star Johl', arial;
+  font-size: 40px;
+  color: #feda4a;
+  text-shadow: 2px 2px 2px  darkgray;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  align-self: center;
+}
+#directorName{
+  color: white;
+  font-size: 20px;
+  font-family: Star Jedi;
+  margin: 20px 0 0 20px;
+}
+#releaseDate{
+  color: white;
+  font-size: 20px;
+  font-family: Star Jedi;
+  margin: 20px 0 0 20px;
+}
+
+#movieIllu{
+  height: 40%;
+  width: 35%;
+  position: relative;
+  align-self: center;
+}
