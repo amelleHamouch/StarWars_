@@ -20,30 +20,30 @@ function ajaxGet(url, callback) {
   req.send(null);
 }
 
-function afficherPlanets(planets) {
-  var listPlanets = JSON.parse(planets);
+// function afficherPlanets(planets) {
+//   var listPlanets = JSON.parse(planets);
 
-  var planetContainer = document.getElementById("PlanetContainer");
-  while (planetContainer.firstChild) {
-    planetContainer.removeChild(planetContainer.lastChild);
-  }
+//   var planetContainer = document.getElementById("PlanetContainer");
+//   while (planetContainer.firstChild) {
+//     planetContainer.removeChild(planetContainer.lastChild);
+//   }
 
-  for (var i in listPlanets) {
-    var name = listPlanets.name;
-    console.log(name);
-    
-    var population = listPlanets.population;
-    var rotation_period = listPlanets.rotation_period;
-    var orbital_period = listPlanets.orbital_period;
-    var climate = listPlanets.climate;
-    var gravity = listPlanets.gravity;
-    var standard = listPlanets.standard;
-    var terrain = listPlanets.terrain;
+//   for (var i in listPlanets) {
+//     var name = listPlanets.name;
+//     console.log(name);
+
+//     var population = listPlanets.population;
+//     var rotation_period = listPlanets.rotation_period;
+//     var orbital_period = listPlanets.orbital_period;
+//     var climate = listPlanets.climate;
+//     var gravity = listPlanets.gravity;
+//     var standard = listPlanets.standard;
+//     var terrain = listPlanets.terrain;
 
 
-     var card = document.createElement('div');
-    card.className = "card";
-     planetContainer.appendChild(card);
+    // var card = document.createElement('div');
+    // card.className = "card";
+    // planetContainer.appendChild(card);
 
 
     // var cardTitle = document.createElement('h3');
@@ -90,19 +90,19 @@ function afficherPlanets(planets) {
 
 
 
-  };
+//   };
 
 
-}
+// }
 
-function getPlanet(planets) {
+// function getPlanet(planets) {
 
-  for (var key in planets) {
-    var url = planets[key].toString();
-    ajaxGet(url, afficherPlanets);
-  }
+//   for (var key in planets) {
+//     var url = planets[key].toString();
+//     ajaxGet(url, afficherPlanets);
+//   }
 
-}
+// }
 
 //définition de l'image de fond par rapport au numéro d'épisode 
 function setMovieImage(episode, cardImg) {
@@ -170,21 +170,21 @@ function redirectToMovieDetail(films, key) {
     var crawlerContent = document.createElement('p');
     crawlerContent.id = "crawlerTxt";
 
-    var planetButton = document.createElement('button');
-    planetButton.id = "planetButton";
-    planetButton.textContent = "Toutes les planètes de ce film";
-    planetButton.onclick = function () {
-      getPlanet(films["results"][key].planets);
-    };
+    // var planetButton = document.createElement('button');
+    // planetButton.id = "planetButton";
+    // planetButton.textContent = "Toutes les planètes de ce film";
+    // planetButton.onclick = function () {
+    //   getPlanet(films["results"][key].planets);
+    // };
 
 
     crawler.appendChild(filmTitle);
-    crawler.appendChild(planetButton);
+   // crawler.appendChild(planetButton);
     crawler.appendChild(filmIllu);
     crawler.appendChild(filmDirector);
     crawler.appendChild(release);
     crawler.appendChild(crawlerContent);
-    crawler.appendChild(planetButton);
+   // crawler.appendChild(planetButton);
 
     setMovieImage(episode, filmIllu);
 
