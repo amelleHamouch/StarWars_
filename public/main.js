@@ -47,19 +47,30 @@ function setMovieImage(episode, cardImg) {
 }
 
 
-function redirectToMovieDetail(episode,films) {
+function redirectToMovieDetail(films,key) {
+  
+console.log(key);
 
-var scrawlerTxt = films["results"][episode].opening_crawl;
+try {
+  var scrawlerTxt = films["results"][key].opening_crawl;
+  var title = films["results"][key].title;
+  console.log(title);
+  var releaseDate = films["results"][key].release_date;
+  var directorName =  films["results"][key].director;
+  var episode =  films["results"][key].episode_id;
 
-var title = films["results"][episode].title;
-var releaseDate = films["results"][episode].release_date;
-var directorName =  films["results"][episode].director;
+} catch (error) {
+   var scrawlerTxt = "Une erreur est survenue";
+  var title = "les données sont inaccessible";
+  var releaseDate = "";
+  var directorName =  "";
+} 
+
 var container = document.getElementById("ScrawlerContainer");
+
 if (document.getElementById("crawl")== null) {
   var crawler = document.createElement('div');
   crawler.id = "crawl";
-
-
 
   var filmTitle = document.createElement('h2');
   filmTitle.id = "movieTitle";
@@ -77,13 +88,7 @@ if (document.getElementById("crawl")== null) {
   var crawlerContent = document.createElement('p');
   crawlerContent.id = "crawlerTxt";
 
-  var goBackBtn = document.createElement('btn');
-  goBackBtn.id = "goBackBtn";
-  goBackBtn.textContent ="^";
-  goBackBtn.onclick = function () {
-   document.getElementsByClassName("titleContainer").scrollIntoView();;
-    
-};
+
 
 
   crawler.appendChild(filmTitle);
@@ -91,7 +96,6 @@ if (document.getElementById("crawl")== null) {
   crawler.appendChild(filmDirector);
   crawler.appendChild(release);
   crawler.appendChild(crawlerContent);
-  crawler.appendChild(goBackBtn);
 
    setMovieImage(episode,filmIllu);
 
@@ -131,6 +135,7 @@ function afficherListe(reponse) {
   var listFilm = document.getElementById("movieContainer");
   var films = JSON.parse(reponse);
   for (var key in films["results"]) {
+    console.log(key);
     var card = document.createElement('div');
     card.id = "card";
     var cardTiltle = document.createElement('h3');
@@ -142,13 +147,13 @@ function afficherListe(reponse) {
     const episode = films["results"][key].episode_id;
     var cardImg = document.createElement('img');
     setMovieImage(episode, cardImg);
-
+    const index  = key;
     var btnSeeMore = document.createElement('button');
 
     btnSeeMore.onclick = function () {
         var films = JSON.parse(reponse);
 
-      redirectToMovieDetail(episode,films);
+      redirectToMovieDetail(films,index);
     };
 
 
