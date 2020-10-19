@@ -111,7 +111,7 @@ body {
    text-shadow: 0 0 4px #feda4a;
    box-shadow: inset 0 0 6px #feda4a,  0 0 6px #feda4a;
 }
-#planetButton{
+#charButton{
   border: 2px solid #404040;
     background-color: rgba(70, 70, 70, 0.25);
     box-shadow: none;
@@ -121,12 +121,20 @@ body {
     font-size: 16px;
 }
 
-#planetButton:hover {
+#charButton:hover {
   border: 2px solid #feda4a;
   color: #feda4a;
   text-shadow: 0 0 4px #feda4a;
   box-shadow: inset 0 0 6px #feda4a,  0 0 6px #feda4a;
 }
+
+#planetContainer{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+  grid-gap: 2rem;
+  margin: 2rem;
+}
+
 #crawl{
 
   width: 100%;

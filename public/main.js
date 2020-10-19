@@ -20,89 +20,47 @@ function ajaxGet(url, callback) {
   req.send(null);
 }
 
-// function afficherPlanets(planets) {
-//   var listPlanets = JSON.parse(planets);
-
-//   var planetContainer = document.getElementById("PlanetContainer");
-//   while (planetContainer.firstChild) {
-//     planetContainer.removeChild(planetContainer.lastChild);
-//   }
-
-//   for (var i in listPlanets) {
-//     var name = listPlanets.name;
-//     console.log(name);
-
-//     var population = listPlanets.population;
-//     var rotation_period = listPlanets.rotation_period;
-//     var orbital_period = listPlanets.orbital_period;
-//     var climate = listPlanets.climate;
-//     var gravity = listPlanets.gravity;
-//     var standard = listPlanets.standard;
-//     var terrain = listPlanets.terrain;
+function createCharCard(content,parent,type){
 
 
-    // var card = document.createElement('div');
-    // card.className = "card";
-    // planetContainer.appendChild(card);
-
-
-    // var cardTitle = document.createElement('h3');
-    // cardTitle.textContent = name;
-    // card.appendChild(cardTitle);
-
-
-    // var cardpopulation = document.createElement('p');
-    // cardpopulation.textContent ="Population : "+ population;
-    // card.appendChild(cardpopulation);
-
-
-    // var cardRotation = document.createElement('p');
-    // cardRotation.textContent ="Rotation Period : "+ rotation_period;
-    // card.appendChild(cardRotation);
-
-
-    // var cardOrbit = document.createElement('p');
-    // cardOrbit.textContent = "Orbital Period : "+orbital_period;
-    // card.appendChild(cardOrbit);
-
-
-    // var cardClimate = document.createElement('p');
-    // cardClimate.textContent ="Climate : "+ climate;
-    // card.appendChild(cardClimate);
-
-
-    // var cardGravity = document.createElement('p');
-    // cardGravity.textContent ="Gravity : "+ gravity;
-    // card.appendChild(cardGravity);
-
-
-    // var cardStand = document.createElement('p');
-    // cardStand.textContent = "Standard : "+standard;
-    // card.appendChild(cardStand);
-
-
-    // var cardterrain = document.createElement('p');
-    // cardterrain.textContent = "Terrain : "+terrain;
-    // card.appendChild(cardterrain);
+ var child = document.createElement(type);
+ child.textContent = content;
+ parent.appendChild(child);
+}
 
 
 
+function afficherPlanets(characters) {
+  var listCharacters = JSON.parse(characters);
 
 
+  var planetContainer = document.getElementById("planetContainer");
+   while (planetContainer.firstChild) {
+     planetContainer.removeChild(planetContainer.lastChild);
+  }
+   console.log(listCharacters.name);
 
-//   };
+    var name = listCharacters.name;
+   
+
+ var card = document.createElement('div');
+ card.className = "card";
+ for (var key in listCharacters) {
+   createCharCard(name,card,"h3");
+   planetContainer.appendChild(card);
+ }
 
 
-// }
+ }
 
-// function getPlanet(planets) {
+function getChar(chars) {
 
-//   for (var key in planets) {
-//     var url = planets[key].toString();
-//     ajaxGet(url, afficherPlanets);
-//   }
+  for (var key in chars) {
+    var url = chars[key].toString();
+    ajaxGet(url, afficherPlanets);
+  }
 
-// }
+}
 
 //définition de l'image de fond par rapport au numéro d'épisode 
 function setMovieImage(episode, cardImg) {
@@ -137,10 +95,10 @@ function redirectToMovieDetail(films, key) {
   try {
     var scrawlerTxt = films["results"][key].opening_crawl;
     var title = films["results"][key].title;
-    var releaseDate = films["results"][key].release_date;
-    var directorName = films["results"][key].director;
-    var episode = films["results"][key].episode_id;
+    var releaseDate ="Release date : "+ films["results"][key].release_date;
+    var directorName ="Directed by : "+ films["results"][key].director;
 
+    var episode = films["results"][key].episode_id;
   } catch (error) {
     var scrawlerTxt = "Une erreur est survenue";
     var title = "les données sont inaccessible";
@@ -170,25 +128,22 @@ function redirectToMovieDetail(films, key) {
     var crawlerContent = document.createElement('p');
     crawlerContent.id = "crawlerTxt";
 
-    // var planetButton = document.createElement('button');
-    // planetButton.id = "planetButton";
-    // planetButton.textContent = "Toutes les planètes de ce film";
-    // planetButton.onclick = function () {
-    //   getPlanet(films["results"][key].planets);
-    // };
+    var charButton = document.createElement('button');
+    charButton.id = "charButton";
+    charButton.textContent = "Personnages présents dans ce film";
+    charButton.onclick = function () {
+      getChar(films["results"][key].characters);
+    };
 
 
     crawler.appendChild(filmTitle);
-   // crawler.appendChild(planetButton);
     crawler.appendChild(filmIllu);
     crawler.appendChild(filmDirector);
     crawler.appendChild(release);
     crawler.appendChild(crawlerContent);
-   // crawler.appendChild(planetButton);
+     crawler.appendChild(charButton);
 
     setMovieImage(episode, filmIllu);
-
-
     container.appendChild(crawler);
     crawler.id = "crawl";
     crawlerContent.textContent = scrawlerTxt;
