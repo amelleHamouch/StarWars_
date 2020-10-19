@@ -45,11 +45,8 @@ function afficherPlanets(characters) {
 
  var card = document.createElement('div');
  card.className = "card";
- for (var key in listCharacters) {
-   createCharCard(name,card,"h3");
-   planetContainer.appendChild(card);
- }
-
+ createCharCard(name,card,"h3");
+ planetContainer.appendChild(card);
 
  }
 
